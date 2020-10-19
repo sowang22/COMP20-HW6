@@ -1,0 +1,117 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Homework 6 </title>
+	<script language="javascript">
+		window.onload=function()
+		{
+			document.getElementById("enter").onclick = function()
+			{
+				n1 = document.form1.num1.value;
+				n2 = document.form1.num2.value;
+				result = "1st number: "+ n1 + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2nd number: " + n2; 
+				document.getElementById("num-data").innerHTML = result;
+
+				var f1 = getFactors(n1);
+				var f2 = getFactors(n2);
+				var s1 = addArray(f1);
+				var s2 = addArray(f2);
+
+				if ((n1 == s2) && (n2 == s1)) 
+				{
+					document.getElementById("amicable-data").innerHTML = "Numbers are amicable.";
+				} else 
+				{
+					document.getElementById("amicable-data").innerHTML = "Numbers are not amicable.";
+				}
+
+
+				/* TEST CASES showArray: must individually comment out a certain line to test it.
+				I had an issue with the original location of trying to test it 
+				right when put under the showArray function, but after moving it to here, 
+				it seemed to work. Is there any reason for that? 
+				//showArray([33,4,6,88,92]);
+				//showArray([234,52,199,30,55,28,67]);
+				//showArray([]);
+				//showArray([1]);
+				//showArray([122222, 34, 4, "hi", 3]); */
+
+				/* TEST CASES getFactors: must individually comment out a certain line to test it. I opted to use the showArray function to print the contents of the array out -- since I had previously tested showArray and knew it worked, I figured it would remain the same when connected to a new function. 
+				//showArray(getFactors(100));
+				//showArray(getFactors(3));
+				//showArray(getFactors(0));
+				//showArray(getFactors(233490512));
+				//showArray(getFactors(5555555)); */
+			}
+		}
+
+		function isFactor(num, n)
+		{
+			if (num % n == 0)
+			{
+				return true;
+			} else 
+			{
+				return false;
+			}
+		}
+		/* TEST CASES isFactor
+		document.write(isFactor(10,5));
+		document.write(isFactor(34,9));
+		document.write(isFactor(88888,1));
+		document.write(isFactor(91,3));
+		document.write(isFactor(2,2)); */
+
+		function showArray(arr)
+		{
+			items = "";
+			for (i = 0; i < arr.length; i++) {
+				items += arr[i] + " ";
+			}
+			document.getElementById("num-data").innerHTML = items;
+		}
+
+		function addArray(arr)
+		{
+			sum = 0; 
+			for (i = 0; i < arr.length; i++)
+			{
+				sum += arr[i];
+			}
+			return sum; 
+		}
+		/* TEST CASES addArray
+		document.write(addArray([33,4,6,88,92]) + "<br/>");
+		document.write(addArray([234,52,199,30,55,28,67]) + "<br/>");
+		document.write(addArray([]) + "<br/>");
+		document.write(addArray([1]) + "<br/>");
+		document.write(addArray([122222, 34, 4, 0, 3]) + "<br/>"); */ 
+
+		function getFactors(n)
+		{
+			var factors = [];
+			for (i = 1; i < n; i++) 
+			{
+				if (isFactor(n,i) == true)
+				{
+					factors.push(i);
+				}
+			}
+			return factors; 
+		}
+	</script>
+</head>
+
+<body>
+	<form name="form1">
+		Number 1: <input type="text" name="num1" id="num1>"> <br/>
+		Number 2: <input type="text" name="num2" id="num2>"> <br/>
+		<input type="button" value="Enter" id="enter">
+	</form>
+	<hr>
+	<div id="num-data"></div>
+	<hr>
+	<div id="amicable-data"></div>
+
+</body>
+</html>
