@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Extra Credit</title>
+</head>
+
+<body>
+	<script language="javascript">
+		function pressed()
+		{
+			myBtn=document.getElementById("button");
+
+			if (myBtn.value == "-->")
+			{
+				myBtn.value = "<--";
+				temp = document.getElementById("text1").value;
+				document.getElementById("text2").value = temp;
+				document.getElementById("text1").value = "";
+			}
+			else
+			{
+				myBtn.value = "-->";
+				temp = document.getElementById("text2").value;
+				document.getElementById("text1").value = temp;
+				document.getElementById("text2").value = "";
+			}
+		}
+	</script>
+	<form> 
+		<input type="text" name="text1" id="text1">
+		<input type="button" id="button" value="--&gt;" onclick="pressed()">
+		<input type="text" name="text2" id="text2">
+		</form>
+</body>
+</html>
